@@ -1,0 +1,32 @@
+# This is a simple script to create a tmux session and open 4 window panes with given names for organization purposes.
+# I always start a tmux session before beginning a CTF challenge. I have to change directories every time. This script will make it a smooth process.
+# It will create a new tmux session with the given name. In my case I call it shellby.
+# It will also start the window path at the directory of choice. ~/Documents/transfers or any path you want. 
+# For some reason the first window created doesn't get renamed. It starts off as shellby or zsh depending on the shell you're ussing so I had to rename it, give an index of 1.
+# I typically use the 1st index as the vpn. To start the connection to htb or thm or whichever platform you use. This way you can easily go back to that window and see if its still running in case the machine is acting weird. 
+# Next index I use is for my transfers. Such as any reverse shells, any tools you'll need to escalate. You'll use this window pane to host any servers and again can go back to it any time to see if its running with ease.
+# 3rd index I use for nmap scans or creating msfvenom shells. Any recon you can do here to have a separate window pane and copy whatever you may need from here and add it to notes.
+# 4th window is the attacker window. I use this window to run any tool against the machine. Usually the main one. 
+# You can add more to this easily just by copy, pasting and renaming to your choice.
+# I hope this helps.
+# Just give this script chmod +x privileges and run it with ./tmux_shellby.sh
+
+#!/bin/bash
+
+# Start a new TMUX session named "shellby"
+tmux new-session -d -s shellby
+
+# Renames window with index 1 to vpn
+tmux rename-window -t shellby:1 'vpn'
+
+# Create a new window pane "transfers" at index 2 and navigate to ~/Documents/transfers
+tmux new-window -t shellby:2 -n 'transfers' -c ~/Documents/transfers
+
+# Create a new window pane "recon" at index 3 and navigate to ~/Documents
+tmux new-window -t shellby:3 -n 'recon' -c ~/Documents
+
+# Create a new window pane "attacker" at index 4
+tmux new-window -t shellby:4 -n 'attacker' -c ~/Documents
+
+# Attach to the TMUX session
+tmux attach -t shellby
