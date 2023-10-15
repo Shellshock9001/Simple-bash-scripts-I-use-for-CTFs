@@ -11,6 +11,8 @@
 # I hope this helps.
 # Just give this script chmod +x privileges and run it with ./tmux_shellby.sh
 
+
+
 #!/bin/bash
 
 # Start a new TMUX session named "shellby"
