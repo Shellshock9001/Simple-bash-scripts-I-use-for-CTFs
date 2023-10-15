@@ -11,8 +11,6 @@
 # I hope this helps.
 # Just give this script chmod +x privileges and run it with ./tmux_shellby.sh
 
-<img width="1243" alt="tmux_shellby" src="https://github.com/Shellshock9001/Simple-bash-scripts-I-use-for-CTFs/assets/110210595/cffa1d51-afcf-4c79-a720-552a2abe6428">
-
 #!/bin/bash
 
 # Start a new TMUX session named "shellby"
